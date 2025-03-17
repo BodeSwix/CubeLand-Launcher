@@ -109,8 +109,3 @@ autoUpdater.on('download-progress', (progress) => {
     const updateWindow = UpdateWindow.getWindow();
     if (updateWindow) updateWindow.webContents.send('download-progress', progress);
 })
-
-autoUpdater.on('error', (err) => {
-    const updateWindow = UpdateWindow.getWindow();
-    if (updateWindow) updateWindow.webContents.send('error', err);
-});

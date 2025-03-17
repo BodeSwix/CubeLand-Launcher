@@ -2,7 +2,7 @@
  * @author Luuxis
  * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0
  */
-import { config, database, logger, changePanel, appdata, setStatus, pkg, popup } from '../utils.js'
+import { config, database, logger, changePanel, appdata, setStatus, pkg } from '../utils.js'
 
 const { Launch } = require('minecraft-java-core')
 const { shell, ipcRenderer } = require('electron')
@@ -303,30 +303,14 @@ class Home {
             };
             ipcRenderer.send('main-window-progress-reset')
             infoStartingBOX.style.display = "none"
-            playInstanceBTN.style.display = "flex"
+            playInstanceBTN.style.display = "block"
             infoStarting.innerHTML = `Vérification`
             new logger(pkg.name, '#7289da');
             console.log('Close');
         });
 
         launch.on('error', err => {
-            let popupError = new popup()
-
-            popupError.openPopup({
-                title: 'Erreur',
-                content: err.error,
-                color: 'red',
-                options: true
-            })
-
-            if (configClient.launcher_config.closeLauncher == 'close-launcher') {
-                ipcRenderer.send("main-window-show")
-            };
             ipcRenderer.send('main-window-progress-reset')
-            infoStartingBOX.style.display = "none"
-            playInstanceBTN.style.display = "flex"
-            infoStarting.innerHTML = `Vérification`
-            new logger(pkg.name, '#7289da');
             console.log(err);
         });
     }
