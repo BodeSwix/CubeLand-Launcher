@@ -1,7 +1,7 @@
 {
     "name": "CubeLand-Launcher",
     "preductname": "CubeLand Launcher",
-    "version": "2.0.13",
+    "version": "2.0.14",
     "description": "Launcher Minecraft Moddé pour le serveur CubeLand",
     "main": "src/app.js",
     "author": {
